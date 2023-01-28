@@ -66,6 +66,8 @@ namespace HellTakerAniX
 
         private void CreateAnimationList(string fileName)
         {
+            FrameTimer?.Stop();
+
             string bitmapPath = @$"Resources/{fileName}";
             Bitmap bitmap = Bitmap.DecodeToHeight(File.OpenRead(bitmapPath), 100);
             int frame = (int)bitmap.Size.Width / 100;
@@ -81,6 +83,8 @@ namespace HellTakerAniX
             {
                 _frames.Add(new CroppedBitmap(bitmap, new(100 * i, 0, 100, 100)));
             }
+
+            FrameTimer?.Start();
         }
 
         #region EventHandlers
