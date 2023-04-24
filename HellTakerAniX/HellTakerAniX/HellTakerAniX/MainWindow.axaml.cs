@@ -26,7 +26,10 @@ namespace HellTakerAniX
 
             InitCharacterContextMenuItems();
 
-            CreateAnimationList("Cerberus.png");
+            string resourceFileName = CharacterManager.GetSpriteResourceName(
+                SettingManager.Instance.Setting.CharacterType);
+
+            CreateAnimationList(resourceFileName);
 
             FrameTimer = new()
             {
@@ -41,7 +44,7 @@ namespace HellTakerAniX
         {
             List<RadioButton> list = new();
 
-            foreach (HTCharacter character in App.Characters)
+            foreach (HTCharacter character in CharacterManager.Characters)
             {
                 RadioButton button = new()
                 {
@@ -54,6 +57,8 @@ namespace HellTakerAniX
                 button.Click += (sender, e) =>
                 {
                     ContextFlyout.Hide();
+
+                    SettingManager.Instance.Setting.CharacterType = character.CharacterType;
 
                     CreateAnimationList(character.SpriteResourceName);
                 };
