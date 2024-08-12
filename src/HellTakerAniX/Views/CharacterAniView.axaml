@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="HellTakerAniX.Views.CharacterAniView">
+    <UserControl.ContextFlyout>
+        <MenuFlyout>
+            <MenuItem x:Name="CharacterContextMenuItem"
+                      Header="Character"
+                      ItemsSource="{Binding CharacterSelectionButtons}" />
+
+            <MenuItem Command="{Binding RemoveCharacterCommand}"
+                      Header="Remove" />
+        </MenuFlyout>
+    </UserControl.ContextFlyout>
+       
+    <Grid x:Name="CharacterAniGrid"
+          Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="AnimationBox1"
+            Grid.Column="0"
+            IsVisible="True"
+            Source="{Binding CurrentFrameImage}" />
+
+        <Image x:Name="AnimationBox2"
+            Grid.Column="1"
+            IsVisible="False" />
+                
+        <Image x:Name="AnimationBox3"
+            Grid.Column="2"
+            IsVisible="False" />
+    </Grid>
+</UserControl>

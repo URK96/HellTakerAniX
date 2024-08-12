@@ -15,32 +15,7 @@
         Topmost="True"
         TransparencyLevelHint="Transparent"
         mc:Ignorable="d">
-    <Window.ContextFlyout>
-        <MenuFlyout>
-            <MenuItem x:Name="CharacterContextMenuItem"
-                      Header="Character" />
-
-            <MenuItem Click="RemoveMenuItem_Click"
-                      Header="Remove" />
-        </MenuFlyout>
-    </Window.ContextFlyout>
-
-    <Grid x:Name="aniBoxContainer"
-          Background="Transparent">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
-        <Image x:Name="AnimationBox1"
-               Grid.Column="0"
-               IsVisible="True" />
-        <Image x:Name="AnimationBox2"
-               Grid.Column="1"
-               IsVisible="False" />
-        <Image x:Name="AnimationBox3"
-               Grid.Column="2"
-               IsVisible="False" />
+    <Grid>
+        <ContentControl Content="{Binding ContentView}" />
     </Grid>
 </Window>
