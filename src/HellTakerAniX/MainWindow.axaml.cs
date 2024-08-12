@@ -66,7 +66,7 @@ namespace HellTakerAniX
                 list.Add(button);
             }
 
-            CharacterContextMenuItem.Items = list;
+            CharacterContextMenuItem.ItemsSource = list;
         }
 
         private void CreateAnimationList(string fileName)
@@ -127,10 +127,10 @@ namespace HellTakerAniX
         {
             if (_isPointerPressed)
             {
-                if (_pressedPointerPoint is null)
-                {
-                    return;
-                }
+                // if (_pressedPointerPoint is null)
+                // {
+                //     return;
+                // }
 
                 PointerPoint currentPoint = e.GetCurrentPoint(this);
 
