@@ -127,11 +127,6 @@ namespace HellTakerAniX
         {
             if (_isPointerPressed)
             {
-                // if (_pressedPointerPoint is null)
-                // {
-                //     return;
-                // }
-
                 PointerPoint currentPoint = e.GetCurrentPoint(this);
 
                 Position = new(Position.X + (int)(currentPoint.Position.X - _pressedPointerPoint.Position.X),
