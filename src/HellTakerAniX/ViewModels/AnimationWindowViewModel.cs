@@ -1,11 +1,11 @@
 namespace HellTakerAniX.ViewModels;
 
-public partial class AnimationWindowWindowViewModel : ObservableObject
+public partial class AnimationWindowViewModel : ObservableObject
 {
     [ObservableProperty]
     private object _contentView;
 
-    public AnimationWindowWindowViewModel()
+    public AnimationWindowViewModel()
     {
         _contentView = new CharacterAniView();
     }

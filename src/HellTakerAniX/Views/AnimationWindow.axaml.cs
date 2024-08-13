@@ -16,7 +16,7 @@ namespace HellTakerAniX.Views
             Width = 100;
             Height = 100;
 
-            DataContext = new AnimationWindowWindowViewModel();
+            DataContext = new AnimationWindowViewModel();
         }
 
         #region EventHandlers
