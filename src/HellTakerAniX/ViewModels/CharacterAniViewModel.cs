@@ -1,8 +1,6 @@
-using System.Timers;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
-using CommunityToolkit.Mvvm.Input;
 
 namespace HellTakerAniX.ViewModels;
 
@@ -10,29 +8,19 @@ public partial class CharacterAniViewModel : ObservableObject
 {
     [ObservableProperty]
     private IImage _currentFrameImage;
-    [ObservableProperty]
-    private IRelayCommand _removeCharacterCommand;
     private HTCharacterTypeEnum _currentCharacter = HTCharacterTypeEnum.Azazel;
-    private readonly System.Timers.Timer _frameTimer;
     private readonly List<IImage> _frames = new(12);
-    private int _frameCount = 0;
+    private readonly FrameTimerService _frameTimerService = App.Services.GetService<FrameTimerService>();
+    private bool _isFrameResourceUpdating = false;
 
     public RadioButton[] CharacterSelectionButtons { get; private set; }
 
     public CharacterAniViewModel()
     {
-        _frameTimer = new(TimeSpan.FromSeconds(1 / 18.0));
-        
-        _frameTimer.Elapsed += FrameTime_Elapsed;
+        _frameTimerService.NextFrameInvoked += FrameTimerService_NextFrameInvoked;
 
-        InitializeCommand();
         InitCharacterContextMenuItems();
         UpdateCharacterResources();
-    }
-
-    private void InitializeCommand()
-    {
-        // _removeCharacterCommand = new RelayCommand()
     }
 
     private void InitCharacterContextMenuItems()
@@ -71,7 +59,7 @@ public partial class CharacterAniViewModel : ObservableObject
 
     private void CreateAnimationList(string fileName)
     {
-        _frameTimer?.Stop();
+        _isFrameResourceUpdating = true;
 
         string bitmapPath = @$"Resources/{fileName}";
         Bitmap bitmap = Bitmap.DecodeToHeight(File.OpenRead(bitmapPath), 100);
@@ -89,18 +77,21 @@ public partial class CharacterAniViewModel : ObservableObject
             _frames.Add(new CroppedBitmap(bitmap, new(100 * i, 0, 100, 100)));
         }
 
-        UpdateFrameImage();
-        _frameTimer?.Start();
+        _isFrameResourceUpdating = false;
     }
 
-    private void FrameTime_Elapsed(object sender, ElapsedEventArgs e)
+    private void FrameTimerService_NextFrameInvoked(object sender, int currentFrameCount)
     {
-        UpdateFrameImage();
+        if (!_isFrameResourceUpdating)
+        {
+            UpdateFrameImage(currentFrameCount);
+        }
     }
 
-    private void UpdateFrameImage()
+    private void UpdateFrameImage(int currentFrameCount)
     {
-        _frameCount %= _frames.Count;
-        CurrentFrameImage = _frames[_frameCount++];        
+        int frameIndex = currentFrameCount % _frames.Count;
+
+        CurrentFrameImage = _frames[frameIndex];
     }
 }
