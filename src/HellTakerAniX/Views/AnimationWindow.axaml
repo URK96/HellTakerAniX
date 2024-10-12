@@ -13,6 +13,7 @@
         PointerReleased="Window_PointerReleased"
         SystemDecorations="None"
         Topmost="True"
+        ShowInTaskbar="False"
         TransparencyLevelHint="Transparent"
         mc:Ignorable="d">
     <Grid>
