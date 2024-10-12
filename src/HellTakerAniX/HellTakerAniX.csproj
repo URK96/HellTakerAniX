@@ -31,6 +31,11 @@
     <!-- <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" /> -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views/CharacterAniWindow.axaml.cs">
+      <DependentUpon>CharacterAniWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <None Update="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

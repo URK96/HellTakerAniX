@@ -4,7 +4,7 @@ using Avalonia.Media.Imaging;
 
 namespace HellTakerAniX.ViewModels;
 
-public partial class CharacterAniViewModel : ObservableObject
+public partial class CharacterAniWindowViewModel : ObservableObject
 {
     [ObservableProperty]
     private IImage _currentFrameImage;
@@ -15,7 +15,7 @@ public partial class CharacterAniViewModel : ObservableObject
 
     public RadioButton[] CharacterSelectionButtons { get; private set; }
 
-    public CharacterAniViewModel()
+    public CharacterAniWindowViewModel()
     {
         _frameTimerService.NextFrameInvoked += FrameTimerService_NextFrameInvoked;
 

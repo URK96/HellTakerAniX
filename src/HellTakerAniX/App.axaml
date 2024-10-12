@@ -17,7 +17,8 @@
                       ToolTipText="Avalonia Tray Icon ToolTip">
                 <TrayIcon.Menu>
                     <NativeMenu>
-                        <NativeMenuItem Header="Add Character" />
+                        <NativeMenuItem Header="Add Character"
+                                        Command="{Binding AddCharacterViewCommand}" />
                         <NativeMenuItem Header="App Setting" />
                         <NativeMenuItemSeparator />
                         <NativeMenuItem Header="Exit"
