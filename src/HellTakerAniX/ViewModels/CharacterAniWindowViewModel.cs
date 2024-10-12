@@ -12,11 +12,14 @@ public partial class CharacterAniWindowViewModel : ObservableObject
     private readonly List<IImage> _frames = new(12);
     private readonly FrameTimerService _frameTimerService = App.Services.GetService<FrameTimerService>();
     private bool _isFrameResourceUpdating = false;
+    private IWindowAction _windowAction = default;
 
     public RadioButton[] CharacterSelectionButtons { get; private set; }
 
-    public CharacterAniWindowViewModel()
+    public CharacterAniWindowViewModel(IWindowAction windowAction)
     {
+        _windowAction = windowAction;
+
         _frameTimerService.NextFrameInvoked += FrameTimerService_NextFrameInvoked;
 
         InitCharacterContextMenuItems();

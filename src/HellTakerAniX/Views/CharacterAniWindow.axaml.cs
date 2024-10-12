@@ -4,7 +4,7 @@ using Avalonia.Interactivity;
 
 namespace HellTakerAniX.Views;
 
-public partial class CharacterAniWindow : Window
+public partial class CharacterAniWindow : Window, IWindowAction
 {
     private bool _isPointerPressed = false;
     private PointerPoint _pressedPointerPoint;
@@ -15,6 +15,8 @@ public partial class CharacterAniWindow : Window
 
         Width = 100;
         Height = 100;
+
+        DataContext = new CharacterAniWindowViewModel(this);
     }
 
     #region EventHandlers

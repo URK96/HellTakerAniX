@@ -17,10 +17,6 @@
         Topmost="True"
         TransparencyLevelHint="Transparent"
         mc:Ignorable="d">
-    <Window.DataContext>
-        <viewModels:CharacterAniWindowViewModel />
-    </Window.DataContext>
-    
     <Window.ContextFlyout>
         <MenuFlyout>
             <MenuItem x:Name="CharacterContextMenuItem"
