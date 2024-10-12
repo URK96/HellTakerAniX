@@ -53,6 +53,12 @@ public partial class CharacterAniWindowViewModel : ObservableObject
         CharacterSelectionButtons = [.. buttons];
     }
 
+    [RelayCommand]
+    private void RemoveCharacter()
+    {
+        _windowAction?.Close();
+    }
+
     private void UpdateCharacterResources()
     {
         string resourceFileName = CharacterManager.GetSpriteResourceName(_currentCharacter);
