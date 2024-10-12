@@ -13,6 +13,7 @@
         PointerPressed="Window_PointerPressed"
         PointerReleased="Window_PointerReleased"
         SystemDecorations="None"
+        ShowInTaskbar="False"
         Topmost="True"
         TransparencyLevelHint="Transparent"
         mc:Ignorable="d">
